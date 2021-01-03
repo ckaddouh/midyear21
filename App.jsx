@@ -26,12 +26,3 @@ const styles = StyleSheet.create({
     color: '#45bf65', 
   },
 });
-<<<<<<< HEAD:App.js
-=======
-
-export default App;
-
-// will this change show up?
-// hello this is dong and i am in the bathroom <3 - dong joo
-// teeesttinngggg finally ugh - annie 
->>>>>>> 8e7e1f14c4e24876acfbbc7a68dd6a664e0e2eaf:App.jsx
