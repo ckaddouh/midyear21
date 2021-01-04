@@ -21,27 +21,53 @@ function HomeScreen({ navigation }) {
       <Button
         title="PLAY"
         onPress={() => navigation.navigate('Game')}
+        color= "#fff"
       />
       <Button
         title="INSTRUCTIONS"
         onPress={() => navigation.navigate('Instructions')}
+        color= "#fff"
       />
     </View>
   );
 }
 
+function checkEquals(text) {
+  onChangeText(text);
+  //this.setState({ text })
+  if (text === 'Hello') {
+     // return this.setState({ hello: true })
+     console.log("yes");
+  }
+  //this.setState({ hello: false })
+}
+
+function handleKeyDown(e) {
+  if (e.keycode === 65) {
+    console.log('yay');
+  }
+  else {
+    console.log('oh no');
+
+  }
+}
+
 function GameScreen() {
   const [value, onChangeText] = React.useState('');
 
+  // used to be => onChangeText(text)
   return (
     <View style={styles.container}>
       <Text>Game Screen</Text>
       <TextInput
-      style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
-      onChangeText={text => onChangeText(text)}
-      placholder = "Type the words as they appear!"
-      value={value}
-    />
+        style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
+        autoFocus = {true}
+        onChangeText={text => onChangeText(text)}   
+        // onChangeText={text => checkEquals(text)}
+        onKeyPress = {(keyPress) => handleKeyDown(keyPress)}
+        placholder = "Type the words as they appear!"
+        value={value}
+      />
     </View>
   );
 }
@@ -79,7 +105,7 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#19B5AF',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -88,7 +114,7 @@ const styles = StyleSheet.create({
     top: 20,
     fontSize: 40,
     fontWeight: 'bold',
-    color: '#45bf65', 
+    color: '#fff', 
   },
 });
 
