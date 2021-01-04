@@ -15,7 +15,7 @@ import { StackNavigator } from 'react-navigation';
 function HomeScreen({ navigation }) {
   
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       
       <Text style = {styles.title}>SPEEDY SNAKE</Text>
       <Button
@@ -28,7 +28,7 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Instructions')}
         color= "#fff"
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -57,7 +57,7 @@ function GameScreen() {
 
   // used to be => onChangeText(text)
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Game Screen</Text>
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
@@ -68,7 +68,7 @@ function GameScreen() {
         placholder = "Type the words as they appear!"
         value={value}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -94,7 +94,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen}  />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Game" component={GameScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Instructions" component={InstructionScreen} />
       </Stack.Navigator>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   title: {
     position: 'absolute',
-    top: 20,
+    top: 100,
     fontSize: 40,
     fontWeight: 'bold',
     color: '#fff', 
