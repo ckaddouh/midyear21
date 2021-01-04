@@ -33,27 +33,21 @@ function HomeScreen({ navigation }) {
 }
 
 function checkEquals(text) {
-  onChangeText(text);
+  console.log("reaced check equals");
   //this.setState({ text })
   if (text === 'Hello') {
      // return this.setState({ hello: true })
      console.log("yes");
   }
+  else{
+    console.log('no');
+  }
   //this.setState({ hello: false })
 }
 
-function handleKeyDown(e) {
-  if (e.keycode === 65) {
-    console.log('yay');
-  }
-  else {
-    console.log('oh no');
-
-  }
-}
 
 function GameScreen() {
-  const [value, onChangeText] = React.useState('');
+  const [value, checkEquals] = React.useState('');
 
   // used to be => onChangeText(text)
   return (
@@ -62,9 +56,9 @@ function GameScreen() {
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
         autoFocus = {true}
-        onChangeText={text => onChangeText(text)}   
+        onChangeText={text => checkEquals(text)}   
         // onChangeText={text => checkEquals(text)}
-        onKeyPress = {(keyPress) => handleKeyDown(keyPress)}
+        // onKeyPress = {(keyPress) => handleKeyDown(keyPress)}
         placholder = "Type the words as they appear!"
         value={value}
       />
