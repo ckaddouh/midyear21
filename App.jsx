@@ -5,7 +5,7 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, TextInput } from 'react-native';
 // import MarqueeText from 'react-native-marquee';
 import { StackNavigator } from 'react-navigation';
@@ -47,20 +47,29 @@ function checkEquals(text) {
 
 
 function GameScreen() {
-  const [value, checkEquals] = React.useState('');
+  const [value, setValue] = useState('');
 
+  const inputHandler = (enteredText) => {
+    setValue(enteredText);
+    if (enteredText == 'hello') {
+      console.log(enteredText);
+      setValue('');
+    }
+
+  };
   // used to be => onChangeText(text)
   return (
     <SafeAreaView style={styles.container}>
       <Text>Game Screen</Text>
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
+        value={value}
         autoFocus = {true}
-        onChangeText={text => checkEquals(text)}   
+        onChangeText = {inputHandler}
+        //onChangeText={text => inputHandler(text)}   
         // onChangeText={text => checkEquals(text)}
         // onKeyPress = {(keyPress) => handleKeyDown(keyPress)}
         placholder = "Type the words as they appear!"
-        value={value}
       />
     </SafeAreaView>
   );
