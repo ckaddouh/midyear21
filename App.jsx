@@ -45,15 +45,18 @@ function checkEquals(text) {
   //this.setState({ hello: false })
 }
 
-
+// setWords([...words, nextWord]);
 function GameScreen() {
   const [value, setValue] = useState('');
+  const [score, setScore] = useState(0);
+  const [words, setWords] = useState([]);
 
   const inputHandler = (enteredText) => {
     setValue(enteredText);
     if (enteredText == 'hello') {
       console.log(enteredText);
       setValue('');
+      setScore({score}+1);
     }
 
   };
