@@ -30,6 +30,18 @@ function HomeScreen({ navigation }) {
       />
     </SafeAreaView>
   );
+  export default class App extends React.Component{
+    render(){
+      return(
+        <View style = {styles.container}>
+          <Image
+              style = {}
+              source={require('./assets/windows-dock.png')}
+        />
+        </View>
+      );
+    }
+  }
 }
 
 
