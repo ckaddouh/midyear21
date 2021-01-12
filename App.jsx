@@ -32,24 +32,20 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function checkEquals(text) {
-  console.log("reaced check equals");
-  //this.setState({ text })
-  if (text === 'Hello') {
-     // return this.setState({ hello: true })
-     console.log("yes");
-  }
-  else{
-    console.log('no');
-  }
-  //this.setState({ hello: false })
-}
+
 
 // setWords([...words, nextWord]);
 function GameScreen() {
+  var fs = require("fs");
+  var text = fs.readFileSync("./words.txt").toString('utf-8');
+  
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
   const [words, setWords] = useState([]);
+  setWords(text.split("\n"));
+  console.log(words[0]);
+
+
 
   const inputHandler = (enteredText) => {
     setValue(enteredText);
@@ -125,6 +121,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-// will this change show up?
-// hello this is dong and i am in the bathroom <3 - dong joo
