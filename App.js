@@ -30,6 +30,10 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Instructions')}
         color= "#fff"
       />
+      <Image
+              style = {}
+              source={require('./assets/windows-dock.png')}
+        />
     </SafeAreaView>
   );
 }
