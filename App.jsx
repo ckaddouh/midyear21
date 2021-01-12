@@ -28,20 +28,12 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Instructions')}
         color= "#fff"
       />
-    </SafeAreaView>
-  );
-  export default class App extends React.Component{
-    render(){
-      return(
-        <View style = {styles.container}>
-          <Image
+      <Image
               style = {}
               source={require('./assets/windows-dock.png')}
         />
-        </View>
-      );
-    }
-  }
+    </SafeAreaView>
+  );
 }
 
 
