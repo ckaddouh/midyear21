@@ -12,6 +12,7 @@ import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
 // import Play from "./assets/screens/Game.js";
 
+
 function HomeScreen({ navigation }) {
   
   return (
@@ -36,13 +37,114 @@ function HomeScreen({ navigation }) {
 
 // setWords([...words, nextWord]);
 function GameScreen() {
-  var fs = require("fs");
-  var text = fs.readFileSync("./words.txt").toString('utf-8');
+  //var fs = require("fs");
+  // var text = fs.readFileSync("./words.txt").toString('utf-8');
   
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
   const [words, setWords] = useState([]);
-  setWords(text.split("\n"));
+  // setWords(wordFile.toSTring('utf-8').split("\n"));
+  var customData = require('./data/tags.txt');
+  setWords("calculate",
+  "algorithm",
+  "computer",
+  "gigabyte",
+  "cache",
+  "dashboard",
+  "emoticon",
+  "encryption",
+  "application",
+  "firewall",
+  "hardware",
+  "graphics",
+  "database",
+  "processing",
+  "controlling",
+  "aggregate",
+  "archive",
+  "assembler",
+  "authorization",
+  "autonomous",
+  "backspace",
+  "keyboard",
+  "binary",
+  "hexadecimal",
+  "octal",
+  "booting",
+  "broadcast",
+  "display",
+  "local",
+  "connection",
+  "decompress",
+  "document",
+  "download",
+  "electricity",
+  "explorer",
+  "footnote",
+  "license",
+  "software",
+  "motherboard",
+  "browser",
+  "malware",
+  "commercial",
+  "operating",
+  "personal",
+  "proprietary",
+  "random",
+  "filesystem",
+  "spamming",
+  "spreadsheet",
+  "security",
+  "synergy",
+  "training",
+  "version",
+  "virtual",
+  "vulnerability",
+  "errors",
+  "attachment",
+  "assisting",
+  "compatible",
+  "technology",
+  "boolean",
+  "variable",
+  "computing",
+  "domain",
+  "ethernet",
+  "email",
+  "gateway",
+  "internet",
+  "megahertz",
+  "phishing",
+  "pseudocode",
+  "protocol",
+  "resolution",
+  "evolution",
+  "analysis",
+  "introduction",
+  "analog",
+  "microprocessor",
+  "peripheral",
+  "server",
+  "integrated",
+  "machine",
+  "mainframe",
+  "arithmetic",
+  "information",
+  "mechanism",
+  "expansion",
+  "predictor",
+  "supercomputer",
+  "embedded",
+  "laptop",
+  "universal",
+  "exchange",
+  "formatting",
+  "screensaver",
+  "multimedia",
+  "incrementor",
+  "mathematician",
+  "equipment",
+  "gadget")
   console.log(words[0]);
 
 
