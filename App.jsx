@@ -11,6 +11,7 @@ import { StyleSheet, Text, View, SafeAreaView, Button, TextInput } from 'react-n
 import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
 // import Play from "./assets/screens/Game.js";
+// import {setCustomText} from 'react-native-global-props';
 
 function HomeScreen({ navigation }) {
   
@@ -36,8 +37,8 @@ function HomeScreen({ navigation }) {
 
 // setWords([...words, nextWord]);
 function GameScreen() {
-  var fs = require("fs");
-  var text = fs.readFileSync("./words.txt").toString('utf-8');
+  //var fs = require("fs");
+  //var text = fs.readFileSync("./words.txt").toString('utf-8');
   
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
@@ -117,6 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     color: '#fff', 
+    font: 'San Francisco'
   },
 });
 
