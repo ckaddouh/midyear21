@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image } from 'react-native';
 // import MarqueeText from 'react-native-marquee';
 import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
@@ -31,7 +31,7 @@ function HomeScreen({ navigation }) {
         color= "#fff"
       />
       <Image
-              style = {}
+              style = {styles.images}
               source={require('./assets/windows-dock.png')}
         />
     </SafeAreaView>
@@ -47,7 +47,7 @@ function GameScreen() {
   
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
-  const [words, setWords] = useState([]);
+  const [words, setWords] = useState(["hello", "there"]);
   
   // setWords(wordFile.toSTring('utf-8').split("\n"));
   // var content = require('./words.txt');
@@ -66,6 +66,8 @@ function GameScreen() {
         // console.log(score);
         points++;
         console.log(points);
+        console.log(words[1]);
+
       //}
     }
     // else {
@@ -154,6 +156,11 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     color: '#fff', 
+  },
+  images: {
+    position: 'absolute',
+    bottom: 80,
+    width: 375,
   },
 });
 
