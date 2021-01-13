@@ -6,12 +6,22 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated } from 'react-native';
 // import MarqueeText from 'react-native-marquee';
 import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
 // import Play from "./assets/screens/Game.js";
 //import wordsFile from "./words.txt";
+import * as Animatable from 'react-native-animatable';
+
+const fadeIn = {
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+};
 
 
 function HomeScreen({ navigation }) {
@@ -19,7 +29,8 @@ function HomeScreen({ navigation }) {
    
     <SafeAreaView style={styles.container}>
       
-      <Text style = {styles.title}>SPEEDY SNAKE</Text>
+      <Animatable.Text animation="fadeIn" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
+
       <Button
         title="PLAY"
         onPress={() => navigation.navigate('Game')}
