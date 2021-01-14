@@ -11,6 +11,7 @@ import { StyleSheet, Text, View, SafeAreaView, Button, TextInput } from 'react-n
 import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
 // import Play from "./assets/screens/Game.js";
+// import {setCustomText} from 'react-native-global-props';
 
 
 function HomeScreen({ navigation }) {
@@ -219,6 +220,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     color: '#fff', 
+    font: 'San Francisco'
   },
 });
 
