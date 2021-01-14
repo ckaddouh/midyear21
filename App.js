@@ -59,6 +59,7 @@ function GameScreen() {
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
   const [words, setWords] = useState(["hello", "there", "world", "this", "list", "works", "I", "thiNk"]);
+  const [index, setIndex] = useState(Math.floor(Math.random()*words.length));
   //["hello", "there", "world", "this", "list", "works", "I", "thiNk"]
   // setWords(wordFile.toSTring('utf-8').split("\n"));
   // var content = require('./words.txt');
@@ -71,15 +72,14 @@ function GameScreen() {
     //var points = 0;
   
     //if (score < 20) {
-      
       console.log(words[score]);
       setValue(enteredText);
-      if (enteredText == words[score]) {
+      if (enteredText == words[index]) {
         setValue('');
         setScore(score+1);
-        console.log(score);
-        //points += 1;
         count += 1;
+        setIndex(Math.floor(Math.random()*words.length));
+        // setWords(words.splice(index, 1));
       //}
     }
     // else {
@@ -95,7 +95,7 @@ function GameScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text>Game Screen</Text>
-      <Text>{words[score]}: {score}</Text>
+      <Text>{words[index]}: {score}</Text>
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
         value={value}
