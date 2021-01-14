@@ -29,7 +29,7 @@ function HomeScreen({ navigation }) {
    
     <SafeAreaView style={styles.container}>
       
-      <Animatable.Text animation="fadeIn" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
+      <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
 
       <Button
         title="PLAY"
