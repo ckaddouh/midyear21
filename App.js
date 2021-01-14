@@ -47,7 +47,7 @@ function GameScreen() {
   
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
-  const [words, setWords] = useState(("./words.txt".split("\n")));
+  const [words, setWords] = useState(["hello", "there", "world", "this", "list", "works", "I", "thiNk"]);
   //["hello", "there", "world", "this", "list", "works", "I", "thiNk"]
   // setWords(wordFile.toSTring('utf-8').split("\n"));
   // var content = require('./words.txt');
