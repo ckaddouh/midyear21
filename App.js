@@ -105,6 +105,8 @@ function GameScreen() {
         // onChangeText={text => checkEquals(text)}
         // onKeyPress = {(keyPress) => handleKeyDown(keyPress)}
         placholder = "Type the words as they appear!"
+        autoCapitalize="none"
+        autoCorrect = "false"
       />
     </SafeAreaView>
   );
@@ -172,8 +174,8 @@ const styles = StyleSheet.create({
   },
   images: {
     position: 'absolute',
-    bottom: 80,
-    width: 375,
+    bottom: 0,
+    width: 350,
   },
 });
 
