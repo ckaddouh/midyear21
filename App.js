@@ -55,47 +55,56 @@ function HomeScreen({ navigation }) {
 function GameScreen() {
   //var fs = require("fs");
   // var text = fs.readFileSync("./words.txt").toString('utf-8');
-  
+
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
-  const [words, setWords] = useState(["hello", "there", "world", "this", "list", "works", "I", "thiNk"]);
+  const [words, setWords] = useState(["hello", "there", "world", "this", "list", "works", "I", "thiNk", "more", "words", ". sd", "asdjk", "hi", "again", "need", "terms", "to", "fill", "up", "list", "one"]);
   const [index, setIndex] = useState(Math.floor(Math.random()*words.length));
+  const [showButton, setShow] = useState(false);
+  const [updateList, setUpdateList] = useState(true);
   //["hello", "there", "world", "this", "list", "works", "I", "thiNk"]
   // setWords(wordFile.toSTring('utf-8').split("\n"));
   // var content = require('./words.txt');
   // var tags = content.split("\n");
   // setWords(tags);
   // console.log(words[0]);
+  // if ({updateList}) {
+  //   var i;
+  //   var j;
 
+  //   for ( i = words.length - 1; i > 0; i--) {
+  //     j = Math.floor(Math.random() * (i + 1));
+  //     var temp = words[i];
+  //     words[i] = words[j];
+  //     words[j] = temp;
+  //   }
+  //   setUpdateList(false);
+  // }
   var count = 0;
   const inputHandler = (enteredText) => {
     //var points = 0;
   
-    //if (score < 20) {
-      console.log(words[score]);
+    if (score < 20) {
       setValue(enteredText);
-      if (enteredText == words[index]) {
+      if (enteredText == words[score]) {
         setValue('');
         setScore(score+1);
         count += 1;
         setIndex(Math.floor(Math.random()*words.length));
         // setWords(words.splice(index, 1));
-      //}
+      }
     }
-    // else {
-    //   <Button
-    //     title="FINISH"
-    //     onPress={() => navigation.navigate('Game')}
-    //     color= "#fff"
-    //   />
-    // }
+    else {
+      setShow(true);
+    }
 
   };
   // used to be => onChangeText(text)
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Game Screen</Text>
-      <Text>{words[index]}: {score}</Text>
+      <Text style = {styles.title2}>Type the words as they appear!</Text>
+      <Text style = {styles.word}>{words[score]}</Text>
+      <Text style = {styles.score}>{score}</Text>
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
         value={value}
@@ -108,6 +117,13 @@ function GameScreen() {
         autoCapitalize="none"
         autoCorrect = "false"
       />
+      {/* if ({showButton}) {
+        <Button
+          title="FINISH"
+          onPress={() => navigation.navigate('Game')}
+          color= "#fff"
+        />
+      } */}
     </SafeAreaView>
   );
 }
@@ -172,10 +188,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff', 
   },
+  title2: {
+    fontSize: 20,
+    color: "white",
+    position: "absolute",
+    top: 100,
+  },
   images: {
     position: 'absolute',
     bottom: 0,
     width: 350,
+  },
+  word: {
+    color: '#fff',
+    fontSize: 40,
+    bottom: 40, 
+  },
+  score: {
+    color: '#fff',
+    fontSize: 30,
+    position: 'absolute',
+    left: 20,
+    top: 40,
   },
 });
 
