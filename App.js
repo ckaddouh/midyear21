@@ -13,6 +13,7 @@ import { StackNavigator } from 'react-navigation';
 // import Play from "./assets/screens/Game.js";
 //import wordsFile from "./words.txt";
 import * as Animatable from 'react-native-animatable';
+import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
 
 const fadeIn = {
   from: {
@@ -52,7 +53,7 @@ function HomeScreen({ navigation }) {
 
 
 // setWords([...words, nextWord]);
-function GameScreen() {
+function GameScreen({navigation}) {
   //var fs = require("fs");
   // var text = fs.readFileSync("./words.txt").toString('utf-8');
 
@@ -60,8 +61,6 @@ function GameScreen() {
   const [score, setScore] = useState(0);
   const [words, setWords] = useState(["hello", "there", "world", "this", "list", "works", "I", "thiNk", "more", "words", ". sd", "asdjk", "hi", "again", "need", "terms", "to", "fill", "up", "list", "one"]);
   const [index, setIndex] = useState(Math.floor(Math.random()*words.length));
-  const [showButton, setShow] = useState(false);
-  const [updateList, setUpdateList] = useState(true);
   //["hello", "there", "world", "this", "list", "works", "I", "thiNk"]
   // setWords(wordFile.toSTring('utf-8').split("\n"));
   // var content = require('./words.txt');
@@ -95,7 +94,7 @@ function GameScreen() {
       }
     }
     else {
-      setShow(true);
+      navigation.navigate('End');
     }
 
   };
@@ -117,6 +116,11 @@ function GameScreen() {
         autoCapitalize="none"
         autoCorrect = "false"
       />
+      <Button 
+        title="BACK"
+        color = "#45bf65"
+        onPress={() => navigation.navigate('Home')}
+      /> 
       {/* if ({showButton}) {
         <Button
           title="FINISH"
@@ -128,32 +132,32 @@ function GameScreen() {
   );
 }
 
-function InstructionScreen() {
+function InstructionScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>Instructions</Text>
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>Text the words you see as fast as you can! Hit play to begin.</Text>
       {/* not able to navigate back to home from a button at the moment */}
-      {/* <Button 
+      <Button 
         title="BACK"
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
-      />     */}
+      />    
     </SafeAreaView>
   );
 }
 
-function EndScreen() {
+function EndScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>End Screen</Text>
-      //<Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>Text the words you see as fast as you can! Hit play to begin.</Text>
+      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in ___ seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
-      {/* <Button 
-        title="BACK"
+      <Button 
+        title="PLAY AGAIN"
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
-      />     */}
+      />    
     </SafeAreaView>
   );
 }
@@ -162,13 +166,14 @@ const Stack = createStackNavigator();
 
 //  options={{ headerShown: false }} inside <Stack.Screen>
 function App() {
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Game" component={GameScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Instructions" component={InstructionScreen} />
-        <Stack.Screen name="End" component={EndScreen} />
+        <Stack.Screen name="Instructions" component={InstructionScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="End" component={EndScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
