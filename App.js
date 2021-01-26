@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated, TouchableHighlight } from 'react-native';
 // import MarqueeText from 'react-native-marquee';
 import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
@@ -176,10 +176,12 @@ function EndScreen({navigation}) {
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
       /> 
-      <Image
-              style = {styles.congrats}
-              source={require('./assets/congrats.png')}
-        />   
+      <TouchableHighlight onPress = {() => navigation.navigate('Home')}>
+        <Image
+                style = {styles.congrats}
+                source={require('./assets/congrats.png')}
+          /> 
+      </TouchableHighlight>  
     </SafeAreaView>
   );
 }
