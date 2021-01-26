@@ -43,7 +43,7 @@ function HomeScreen({ navigation }) {
         color= "#fff"
       />
       <Image
-              style = {styles.images}
+              style = {styles.dock}
               source={require('./assets/windows-dock.png')}
         />
     </SafeAreaView>
