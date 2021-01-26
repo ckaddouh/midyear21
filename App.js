@@ -261,7 +261,11 @@ function EndScreen({navigation}) {
         title="PLAY AGAIN"
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
-      />    
+      /> 
+      <Image
+              style = {styles.congrats}
+              source={require('./assets/congrats.png')}
+        />   
     </SafeAreaView>
   );
 }
@@ -303,7 +307,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 100,
   },
-  images: {
+  dock: {
     position: 'absolute',
     bottom: 0,
     width: 380,
@@ -314,6 +318,12 @@ const styles = StyleSheet.create({
     top: 100,
     width: 100,
     height: 100,
+  },
+  congrats:{
+    position: 'absolute',
+    top: 210,
+    width: 290,
+    height: 120,
   },
   word: {
     color: '#fff',
