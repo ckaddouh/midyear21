@@ -43,8 +43,12 @@ function HomeScreen({ navigation }) {
         color= "#fff"
       />
       <Image
-              style = {styles.images}
+              style = {styles.dock}
               source={require('./assets/windows-dock.png')}
+        />
+      <Image
+              style = {styles.imagegif}
+              source = {require('./assets/mouse_click_small.gif')}
         />
     </SafeAreaView>
   );
@@ -55,6 +59,11 @@ function HomeScreen({ navigation }) {
 function GameScreen({navigation}) {
   //var fs = require("fs");
   // var text = fs.readFileSync("./words.txt").toString('utf-8');
+
+  <Image
+              style = {styles.mouseß}
+              source={require('./assets/mouse.png')}
+        />
 
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
@@ -91,7 +100,7 @@ function GameScreen({navigation}) {
   const inputHandler = (enteredText) => {
     //var points = 0;
   
-    if (score < 20) {
+    if (score < 3) {
       setValue(enteredText);
       if (enteredText == words[score]) {
         setValue('');
@@ -162,10 +171,15 @@ function EndScreen({navigation}) {
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in ___ seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
       <Button 
-        title="PLAY AGAIN"
+        style = {styles.playagain}
+        title="a"
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
-      />    
+      /> 
+      <Image
+              style = {styles.congrats}
+              source={require('./assets/congrats.png')}
+        />   
     </SafeAreaView>
   );
 }
@@ -207,11 +221,33 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 100,
   },
-  images: {
+  playagain:{
+    flex: 1,
+    top: 100,
+  },
+  dock: {
     position: 'absolute',
     bottom: 0,
     width: 380,
     height: 40,
+  },
+  imagegif: {
+    position: 'absolute',
+    top: 100,
+    width: 200,
+    //height: 400,
+  },
+  mouse:{
+    position: 'absolute',
+    top: 100,
+    width: 100,
+    height: 100,
+  },
+  congrats:{
+    position: 'absolute',
+    top: 210,
+    width: 290,
+    height: 120,
   },
   word: {
     color: '#fff',
