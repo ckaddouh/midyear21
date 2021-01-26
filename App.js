@@ -46,6 +46,10 @@ function HomeScreen({ navigation }) {
               style = {styles.dock}
               source={require('./assets/windows-dock.png')}
         />
+      <Image
+              style = {styles.imagegif}
+              source = {require('./assets/mouse_click_small.gif')}
+        />
     </SafeAreaView>
   );
 }
@@ -313,6 +317,11 @@ const styles = StyleSheet.create({
     width: 380,
     height: 40,
   },
+  imagegif: {
+    position: 'absolute',
+    top: 100,
+    width: 200,
+    //height: 400,
   mouse:{
     position: 'absolute',
     top: 100,
