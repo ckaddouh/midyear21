@@ -322,6 +322,7 @@ const styles = StyleSheet.create({
     top: 100,
     width: 200,
     //height: 400,
+  },
   mouse:{
     position: 'absolute',
     top: 100,
