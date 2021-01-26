@@ -202,7 +202,8 @@ const styles = StyleSheet.create({
   images: {
     position: 'absolute',
     bottom: 0,
-    width: 350,
+    width: 380,
+    height: 40,
   },
   word: {
     color: '#fff',
