@@ -57,6 +57,11 @@ function GameScreen({navigation}) {
   //var fs = require("fs");
   // var text = fs.readFileSync("./words.txt").toString('utf-8');
 
+  <Image
+              style = {styles.mouseß}
+              source={require('./assets/mouse.png')}
+        />
+
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
   const [words, setWords] = useState(["hello", "there", "world", "this", "list", "works", "I", "thiNk", "more", "words", ". sd", "asdjk", "hi", "again", "need", "terms", "to", "fill", "up", "list", "one"]);
@@ -204,6 +209,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: 380,
     height: 40,
+  },
+  mouse:{
+    position: 'absolute',
+    top: 100,
+    width: 100,
+    height: 100,
   },
   word: {
     color: '#fff',
