@@ -14,6 +14,8 @@ import { StackNavigator } from 'react-navigation';
 //import wordsFile from "./words.txt";
 import * as Animatable from 'react-native-animatable';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
+import AwesomeButton from "react-native-really-awesome-button";
+import Button from 'react-native-flat-button'
 
 const fadeIn = {
   from: {
@@ -33,9 +35,13 @@ function HomeScreen({ navigation }) {
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
 
       <Button
+        progress
         title="PLAY"
         onPress={() => navigation.navigate('Game')}
         color= "#fff"
+        type="primary"
+        onPress={() => Alert.alert('PLAY')}
+        containerStyle={styles.buttonContainer}
       />
       <Button
         title="INSTRUCTIONS"
@@ -170,6 +176,12 @@ function EndScreen({navigation}) {
       <Text style = {styles.title}>End Screen</Text>
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in ___ seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
+      <Button 
+        style = {styles.playagain}
+        title="a"
+        color = "#45bf65"
+        onPress={() => navigation.navigate('Home')}
+      /> 
       <TouchableHighlight onPress = {() => navigation.navigate('Home')} style = {styles.congrats}>
         <Image
                 source={require('./assets/congrats.png')}
