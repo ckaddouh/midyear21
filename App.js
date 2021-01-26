@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated, TouchableHighlight } from 'react-native';
 // import MarqueeText from 'react-native-marquee';
 import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
@@ -55,7 +55,6 @@ function HomeScreen({ navigation }) {
 }
 
 
-
 // setWords([...words, nextWord]);
 function GameScreen({navigation}) {
   //var fs = require("fs");
@@ -68,106 +67,16 @@ function GameScreen({navigation}) {
 
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
-  const [words, setWords] = useState(["calculate",
-  "algorithm",
-  "computer",
-  "gigabyte",
-  "cache",
-  "dashboard",
-  "emoticon",
-  "encryption",
-  "application",
-  "firewall",
-  "hardware",
-  "graphics",
-  "database",
-  "processing",
-  "controlling",
-  "aggregate",
-  "archive",
-  "assembler",
-  "authorization",
-  "autonomous",
-  "backspace",
-  "keyboard",
-  "binary",
-  "hexadecimal",
-  "octal",
-  "booting",
-  "broadcast",
-  "display",
-  "local",
-  "connection",
-  "decompress",
-  "document",
-  "download",
-  "electricity",
-  "explorer",
-  "footnote",
-  "license",
-  "software",
-  "motherboard",
-  "browser",
-  "malware",
-  "commercial",
-  "operating",
-  "personal",
-  "proprietary",
-  "random",
-  "filesystem",
-  "spamming",
-  "spreadsheet",
-  "security",
-  "synergy",
-  "training",
-  "version",
-  "virtual",
-  "vulnerability",
-  "errors",
-  "attachment",
-  "assisting",
-  "compatible",
-  "technology",
-  "boolean",
-  "variable",
-  "computing",
-  "domain",
-  "ethernet",
-  "email",
-  "gateway",
-  "internet",
-  "megahertz",
-  "phishing",
-  "pseudocode",
-  "protocol",
-  "resolution",
-  "evolution",
-  "analysis",
-  "introduction",
-  "analog",
-  "microprocessor",
-  "peripheral",
-  "server",
-  "integrated",
-  "machine",
-  "mainframe",
-  "arithmetic",
-  "information",
-  "mechanism",
-  "expansion",
-  "predictor",
-  "supercomputer",
-  "embedded",
-  "laptop",
-  "universal",
-  "exchange",
-  "formatting",
-  "screensaver",
-  "multimedia",
-  "incrementor",
-  "mathematician",
-  "equipment",
-  "gadget"]);
+  const [words, setWords] = useState(["calculate", "algorithm", "computer", "gigabyte", "cache", "dashboard", "emoticon", "encryption",
+  "application", "firewall", "hardware", "graphics", "database", "processing", "controlling", "aggregate", "archive", "assembler",
+  "authorization", "autonomous", "backspace", "keyboard", "binary", "hexadecimal", "octal", "booting", "broadcast", "display", "local",
+  "connection", "decompress", "document", "download","electricity","explorer","footnote","license","software","motherboard","browser","malware",
+  "commercial", "operating", "personal", "proprietary", "random", "filesystem", "spamming", "spreadsheet", "security", "synergy", "training",
+  "version", "virtual", "vulnerability", "errors", "attachment", "assisting", "compatible", "technology", "boolean", "variable", "computing",
+  "domain","ethernet","email","gateway","internet","megahertz","phishing","pseudocode", "protocol", "resolution", "evolution", "analysis", "introduction", "analog", 
+  "microprocessor", "peripheral", "server", "integrated", "machine", "mainframe", "arithmetic", "information", "mechanism", "expansion",
+  "predictor","supercomputer","embedded", "laptop", "universal", "exchange", "formatting", "screensaver", "multimedia", "incrementor", "mathematician",
+  "equipment", "gadget"]);
   const [index, setIndex] = useState(Math.floor(Math.random()*words.length));
   //["hello", "there", "world", "this", "list", "works", "I", "thiNk"]
   // setWords(wordFile.toSTring('utf-8').split("\n"));
@@ -267,10 +176,12 @@ function EndScreen({navigation}) {
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
       /> 
-      <Image
-              style = {styles.congrats}
-              source={require('./assets/congrats.png')}
-        />   
+      <TouchableHighlight onPress = {() => navigation.navigate('Home')}>
+        <Image
+                style = {styles.congrats}
+                source={require('./assets/congrats.png')}
+          /> 
+      </TouchableHighlight>  
     </SafeAreaView>
   );
 }
