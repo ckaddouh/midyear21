@@ -191,7 +191,7 @@ function GameScreen({navigation}) {
   const inputHandler = (enteredText) => {
     //var points = 0;
   
-    if (score < 20) {
+    if (score < 3) {
       setValue(enteredText);
       if (enteredText == words[score]) {
         setValue('');
@@ -262,7 +262,8 @@ function EndScreen({navigation}) {
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in ___ seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
       <Button 
-        title="PLAY AGAIN"
+        style = {styles.playagain}
+        title="a"
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
       /> 
@@ -309,6 +310,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
     position: "absolute",
+    top: 100,
+  },
+  playagain:{
+    flex: 1,
     top: 100,
   },
   dock: {
