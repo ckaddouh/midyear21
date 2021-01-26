@@ -176,9 +176,8 @@ function EndScreen({navigation}) {
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
       /> 
-      <TouchableHighlight onPress = {() => navigation.navigate('Home')}>
+      <TouchableHighlight onPress = {() => navigation.navigate('Home')} style = {styles.congrats}>
         <Image
-                style = {styles.congrats}
                 source={require('./assets/congrats.png')}
           /> 
       </TouchableHighlight>  
