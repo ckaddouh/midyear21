@@ -34,15 +34,7 @@ function HomeScreen({ navigation }) {
       
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
 
-      <Button
-        progress
-        title="PLAY"
-        onPress={() => navigation.navigate('Game')}
-        color= "#fff"
-        type="primary"
-        onPress={() => Alert.alert('PLAY')}
-        containerStyle={styles.buttonContainer}
-      />
+
       <Button
         title="INSTRUCTIONS"
         onPress={() => navigation.navigate('Instructions')}
