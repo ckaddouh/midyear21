@@ -14,8 +14,6 @@ import { StackNavigator } from 'react-navigation';
 //import wordsFile from "./words.txt";
 import * as Animatable from 'react-native-animatable';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
-import AwesomeButton from "react-native-really-awesome-button";
-import Button from 'react-native-flat-button'
 
 const fadeIn = {
   from: {
@@ -26,6 +24,7 @@ const fadeIn = {
   },
 };
 
+global.secondsPassed = 0;
 
 function HomeScreen({ navigation }) {
   return (
@@ -33,8 +32,12 @@ function HomeScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
-
-
+      <Button
+        title="PLAY"
+        onPress={() => navigation.navigate('Game')}
+        color= "#fff"
+      />
+    
       <Button
         title="INSTRUCTIONS"
         onPress={() => navigation.navigate('Instructions')}
@@ -94,6 +97,21 @@ function GameScreen({navigation}) {
   //   }
   //   setUpdateList(false);
   // }
+  var date, TimeType, hour, minutes, seconds, fullTime;
+
+  date = new Date();
+  
+  const [sec, setSecs] = useState(date.getSeconds());
+  const [min, setMins] = useState(date.getMinutes());
+  const [newSec, setNewSec] = useState(0);
+  const [newMin, setNewMin] = useState(0);
+  
+  // Creating Date() function object.
+
+  // Getting current hour from Date object.
+  // minutes = date.getMinutes();
+  // seconds = date.getSeconds();
+
   var count = 0;
   const inputHandler = (enteredText) => {
     //var points = 0;
@@ -109,16 +127,30 @@ function GameScreen({navigation}) {
       }
     }
     else {
-      navigation.navigate('End');
+      var newDate = new Date();
+      setNewMin(newDate.getMinutes());
+      setNewSec(newDate.getSeconds());
+      if (newMin - min === 1) {
+        secondsPassed = (60-sec) + newDate.getSeconds();
+      }
+      else {
+        secondsPassed = newSec - sec;
+      }
+      
+      //navigation.navigate('End');
     }
 
   };
   // used to be => onChangeText(text)
+
+
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title2}>Type the words as they appear!</Text>
       <Text style = {styles.word}>{words[score]}</Text>
       <Text style = {styles.score}>{score}</Text>
+      <Text>{min} : {sec} : {newMin} : {newSec}, {secondsPassed}, {newMin == min ? "true":"false"} </Text>
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
         value={value}
@@ -152,6 +184,7 @@ function InstructionScreen({navigation}) {
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>Instructions</Text>
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>Text the words you see as fast as you can! Hit play to begin.</Text>
+      
       {/* not able to navigate back to home from a button at the moment */}
       <Button 
         title="BACK"
@@ -166,7 +199,7 @@ function EndScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>End Screen</Text>
-      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in ___ seconds!</Text>
+      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in {secondsPassed} seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
       <Button 
         style = {styles.playagain}
