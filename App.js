@@ -172,6 +172,10 @@ function GameScreen({navigation}) {
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
       /> 
+      <Image
+              style = {styles.mouse}
+              source = {require('./assets/mouse.png')}
+        />
       {/* if ({showButton}) {
         <Button
           title="FINISH"
@@ -270,9 +274,10 @@ const styles = StyleSheet.create({
   },
   mouse:{
     position: 'absolute',
-    top: 100,
-    width: 100,
-    height: 100,
+    top: 200,
+    left: 4,
+    width: 20,
+    height: 35,
   },
   congrats:{
     position: 'absolute',
