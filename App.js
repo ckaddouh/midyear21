@@ -202,6 +202,11 @@ function InstructionScreen({navigation}) {
         color = "#45bf65"
         onPress={() => navigation.navigate('Home')}
       />    
+
+      <Image
+              style = {styles.arrowgif}
+              source={require('./assets/continuous_teal.gif')}
+        />
     </SafeAreaView>
   );
 }
@@ -274,6 +279,10 @@ const styles = StyleSheet.create({
     top: 100,
     width: 200,
     //height: 400,
+  },
+  arrowgif: {
+    position: 'absolute',
+    top: 179,
   },
   mouse:{
     position: 'absolute',
