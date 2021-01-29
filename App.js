@@ -130,14 +130,18 @@ function GameScreen({navigation}) {
       var newDate = new Date();
       setNewMin(newDate.getMinutes());
       setNewSec(newDate.getSeconds());
-      if (newMin - min === 1) {
+      if (newMin == min) {
+        secondsPassed = newSec - sec;        
+      }
+      else if (newMin != min) {
         secondsPassed = (60-sec) + newDate.getSeconds();
       }
-      else {
-        secondsPassed = newSec - sec;
+
+      if (min === newDate.getMinutes()) {
+        secondsPassed -= 60;
       }
       
-      //navigation.navigate('End');
+      navigation.navigate('End');
     }
 
   };
@@ -201,12 +205,7 @@ function EndScreen({navigation}) {
       <Text style = {styles.title}>End Screen</Text>
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in {secondsPassed} seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
-      <Button 
-        style = {styles.playagain}
-        title="a"
-        color = "#45bf65"
-        onPress={() => navigation.navigate('Home')}
-      /> 
+
       <TouchableHighlight onPress = {() => navigation.navigate('Home')} style = {styles.congrats}>
         <Image
                 source={require('./assets/congrats.png')}
