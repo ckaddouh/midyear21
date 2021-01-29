@@ -25,6 +25,7 @@ const fadeIn = {
 };
 
 global.secondsPassed = 0;
+global.xValue = 0;
 
 function HomeScreen({ navigation }) {
   return (
@@ -105,6 +106,7 @@ function GameScreen({navigation}) {
   const [min, setMins] = useState(date.getMinutes());
   const [newSec, setNewSec] = useState(0);
   const [newMin, setNewMin] = useState(0);
+
   
   // Creating Date() function object.
 
@@ -122,6 +124,7 @@ function GameScreen({navigation}) {
         setValue('');
         setScore(score+1);
         count += 1;
+        xValue += 50;
         setIndex(Math.floor(Math.random()*words.length));
         // setWords(words.splice(index, 1));
       }
@@ -173,8 +176,8 @@ function GameScreen({navigation}) {
         onPress={() => navigation.navigate('Home')}
       /> 
       <Image
-              style = {styles.mouse}
-              source = {require('./assets/mouse.png')}
+        style = {styles.mouse}
+        source = {require('./assets/mouse.png')}
         />
       {/* if ({showButton}) {
         <Button
@@ -275,7 +278,7 @@ const styles = StyleSheet.create({
   mouse:{
     position: 'absolute',
     top: 200,
-    left: 4,
+    left: 0,
     width: 20,
     height: 35,
   },
