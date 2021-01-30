@@ -200,7 +200,7 @@ function InstructionScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>Instructions</Text>
-      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>Text the words you see as fast as you can! Hit play to begin.</Text>
+      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Courier New'}}>Text the words you see as fast as you can! Hit play to begin.</Text>
       
       {/* not able to navigate back to home from a button at the moment */}
       <Button 
