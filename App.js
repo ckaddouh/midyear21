@@ -155,6 +155,7 @@ function GameScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title2}>Type the words as they appear!</Text>
+
       <Text style = {styles.word}>{words[score]}</Text>
       <Text style = {styles.score}>{score}</Text>
       <Text>{min} : {sec} : {newMin} : {newSec}, {secondsPassed}, {newMin == min ? "true":"false"} </Text>
@@ -179,7 +180,11 @@ function GameScreen({navigation}) {
         style = {{position: 'absolute', top: 200, left: xValue, width: 20, height: 35}}
         source = {require('./assets/mouse.png')}
         />
-        <Text>hello: {xValue}</Text>
+
+      <Image
+        style = {{position: 'absolute', top: 200, right: 20, width: 40, height: 35}}
+        source = {require('./assets/folder.png')}
+        />  
       {/* if ({showButton}) {
         <Button
           title="FINISH"
