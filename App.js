@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated, TouchableHighlight, Alert } from 'react-native';
 // import MarqueeText from 'react-native-marquee';
 import { StackNavigator } from 'react-navigation';
 // import Welcome from "./assets/screens/Welcome.js";
@@ -14,6 +14,13 @@ import { StackNavigator } from 'react-navigation';
 //import wordsFile from "./words.txt";
 import * as Animatable from 'react-native-animatable';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+  AwesomeButton,
+  AwesomeButtonProgress,
+  AwesomeButtonSocial,
+} from 'react-awesome-button';import 'react-awesome-button/dist/themes/theme-blue.css';
+
 
 const fadeIn = {
   from: {
@@ -66,7 +73,9 @@ function HomeScreen({ navigation }) {
         title="INSTRUCTIONS"
         onPress={() => navigation.navigate('Instructions')}
         color= "#fff"
+        backgroundColor = "blue"
       />
+
       <Image
               style = {styles.dock}
               source={require('./assets/windows-dock.png')}
