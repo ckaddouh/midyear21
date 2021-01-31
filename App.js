@@ -15,11 +15,9 @@ import { StackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {
-  AwesomeButton,
-  AwesomeButtonProgress,
-  AwesomeButtonSocial,
-} from 'react-awesome-button';import 'react-awesome-button/dist/themes/theme-blue.css';
+//import 'react-awesome-button/dist/themes/theme-blue.css';
+import AwesomeButton from "react-native-really-awesome-button";
+//import 'react-awesome-button/dist/themes/theme-blue.css';
 
 
 const fadeIn = {
@@ -35,29 +33,53 @@ global.secondsPassed = 0;
 global.secondsPassed2 = 0;
 global.wordsGotten = 0;
 
+function specialButton() {
+  return <AwesomeButton>Text</AwesomeButton>;
+}
+
+
 function HomeScreen({ navigation }) {
   return (
    
     <SafeAreaView style={styles.container}>
       
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
-      <Button
-        title="MODE 1"
-        onPress={() => navigation.navigate('Game')}
-        color= "#fff"
-      />
-      <Button
-        title="MODE 2"
-        onPress={() => navigation.navigate('GameMode2')}
-        color= "#fff"
-      />
-    
-      <Button
-        title="INSTRUCTIONS"
-        onPress={() => navigation.navigate('Instructions')}
-        color= "#fff"
-        backgroundColor = "blue"
-      />
+      
+      <AwesomeButton
+      backgroundColor="#1e88e5"
+      backgroundShadow="blue"
+      borderColor="white"
+      medium
+      secondary
+      onPress={next => { navigation.navigate('Game')
+        next();
+      }}
+    >
+      MODE 1
+    </AwesomeButton>
+
+    <AwesomeButton
+      backgroundColor="blue"
+      medium
+      secondary
+      onPress={next => { navigation.navigate('GameMode2')
+        next();
+      }}
+    >
+      MODE 2
+    </AwesomeButton>
+
+    <AwesomeButton
+      backgroundColor="blue"
+      medium
+      secondary
+      onPress={next => { navigation.navigate('Instructions')
+        next();
+      }}
+    >
+      Instructions
+    </AwesomeButton>
+
 
       <Image
               style = {styles.dock}
@@ -165,11 +187,17 @@ function GameScreen({navigation}) {
         autoCapitalize="none"
         autoCorrect = "false"
       />
-      <Button 
-        title="BACK"
+      <AwesomeButton
+        backgroundColor="blue"
         color = "#45bf65"
-        onPress={() => navigation.navigate('Home')}
-      /> 
+        medium
+        secondary
+        onPress={next => { navigation.navigate('Home')
+          next();
+        }}
+      >
+        BACK
+    </AwesomeButton>
       <Image
         style = {{position: 'absolute', top: 200, left: xValue, width: 20, height: 35}}
         source = {require('./assets/mouse.png')}
@@ -256,11 +284,17 @@ function GameScreen2({navigation}) {
         autoCapitalize="none"
         autoCorrect = "false"
       />
-        <Button 
-          title="BACK"
-          color = "#45bf65"
-          onPress={() => navigation.navigate('Home')}
-        /> 
+      <AwesomeButton
+        backgroundColor="blue"
+        color = "#45bf65"
+        medium
+        secondary
+        onPress={next => { navigation.navigate('Home')
+          next();
+        }}
+      >
+        BACK
+    </AwesomeButton>
     </SafeAreaView>
   );
 }
@@ -277,11 +311,17 @@ function InstructionScreen({navigation}) {
       <Text> </Text>
       
       {/* not able to navigate back to home from a button at the moment */}
-      <Button 
-        title="BACK"
+      <AwesomeButton
+        backgroundColor="blue"
         color = "#45bf65"
-        onPress={() => navigation.navigate('Home')}
-      />    
+        medium
+        secondary
+        onPress={next => { navigation.navigate('Home')
+          next();
+        }}
+      >
+        BACK
+    </AwesomeButton>
 
       <Image
               style = {styles.arrowgif}
@@ -348,6 +388,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#008081',
     alignItems: 'center',
     justifyContent: 'center',
+    minHeight: 60
   },
   title: {
     position: 'absolute',
