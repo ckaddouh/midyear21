@@ -27,8 +27,25 @@ const fadeIn = {
 global.secondsPassed = 0;
 global.secondsPassed2 = 0;
 global.wordsGotten = 0;
+global.wordList = ["calculate", "algorithm", "computer", "gigabyte", "cache", "dashboard", "emoticon", "encryption",
+"application", "firewall", "hardware", "graphics", "database", "processing", "controlling", "aggregate", "archive", "assembler",
+"authorization", "autonomous", "backspace", "keyboard", "binary", "hexadecimal", "octal", "booting", "broadcast", "display", "local",
+"connection", "decompress", "document", "download","electricity","explorer","footnote","license","software","motherboard","browser","malware",
+"commercial", "operating", "personal", "proprietary", "random", "filesystem", "spamming", "spreadsheet", "security", "synergy", "training",
+"version", "virtual", "vulnerability", "errors", "attachment", "assisting", "compatible", "technology", "boolean", "variable", "computing",
+"domain","ethernet","email","gateway","internet","megahertz","phishing","pseudocode", "protocol", "resolution", "evolution", "analysis", "introduction", "analog", 
+"microprocessor", "peripheral", "server", "integrated", "machine", "mainframe", "arithmetic", "information", "mechanism", "expansion",
+"predictor","supercomputer","embedded", "laptop", "universal", "exchange", "formatting", "screensaver", "multimedia", "incrementor", "mathematician",
+"equipment", "gadget"];
 
 function HomeScreen({ navigation }) {
+  for (var i = wordList.length - 1; i > 0; i--) {	  
+    var j = Math.floor(Math.random() * (i + 1));	  
+    var temp = wordList[i];	  
+    wordList[i] = wordList[j];	  
+    wordList[j] = temp;	  
+  }
+
   return (
    
     <SafeAreaView style={styles.container}>
@@ -75,17 +92,9 @@ function GameScreen({navigation}) {
 
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
-  const [words, setWords] = useState(["calculate", "algorithm", "computer", "gigabyte", "cache", "dashboard", "emoticon", "encryption",
-  "application", "firewall", "hardware", "graphics", "database", "processing", "controlling", "aggregate", "archive", "assembler",
-  "authorization", "autonomous", "backspace", "keyboard", "binary", "hexadecimal", "octal", "booting", "broadcast", "display", "local",
-  "connection", "decompress", "document", "download","electricity","explorer","footnote","license","software","motherboard","browser","malware",
-  "commercial", "operating", "personal", "proprietary", "random", "filesystem", "spamming", "spreadsheet", "security", "synergy", "training",
-  "version", "virtual", "vulnerability", "errors", "attachment", "assisting", "compatible", "technology", "boolean", "variable", "computing",
-  "domain","ethernet","email","gateway","internet","megahertz","phishing","pseudocode", "protocol", "resolution", "evolution", "analysis", "introduction", "analog", 
-  "microprocessor", "peripheral", "server", "integrated", "machine", "mainframe", "arithmetic", "information", "mechanism", "expansion",
-  "predictor","supercomputer","embedded", "laptop", "universal", "exchange", "formatting", "screensaver", "multimedia", "incrementor", "mathematician",
-  "equipment", "gadget"]);
+  const [words, setWords] = useState(wordList);
   
+
   var date = new Date();
   
   const [sec, setSecs] = useState(date.getSeconds());
@@ -185,16 +194,7 @@ function GameScreen2({navigation}) {
 
   const [value, setValue] = useState('');
   const [score, setScore] = useState(0);
-  const [words, setWords] = useState(["vulnerability", "archive", "expansion", "algorithm", "phishing", "ethernet", "computer", "cache", "arithmetic",
-  "formatting", "dashboard", "encryption", "application", "firewall", "hardware", "graphics", "database", "processing", "controlling", "aggregate", 
-  "assembler", "authorization", "autonomous", "backspace", "keyboard", "binary", "hexadecimal", "octal", "booting", "broadcast", "display", "local",
-  "connection", "decompress", "document", "download","electricity","explorer","footnote","license","software","motherboard","browser","malware",
-  "commercial", "operating", "personal", "proprietary", "random", "filesystem", "spamming", "spreadsheet", "security", "synergy", "training",
-  "version", "virtual", "gigabyte", "errors", "calculate", "attachment", "assisting", "compatible", "technology", "boolean", "variable", "computing",
-  "domain","email","gateway","internet","megahertz", "pseudocode", "protocol", "resolution", "evolution", "analysis", "introduction", "analog", 
-  "microprocessor", "peripheral", "server", "integrated", "machine", "mainframe", "information", "mechanism",
-  "predictor","supercomputer","embedded", "laptop", "universal", "exchange", "screensaver", "multimedia", "incrementor", "mathematician",
-  "equipment", "gadget", "emoticon"]);
+  const [words, setWords] = useState(wordList);
   
   var date = new Date();
   const [sec, setSecs] = useState(date.getSeconds());
@@ -283,6 +283,13 @@ function InstructionScreen({navigation}) {
 }
 
 function EndScreen({navigation}) {
+  for (var i = wordList.length - 1; i > 0; i--) {	  
+    var j = Math.floor(Math.random() * (i + 1));	  
+    var temp = wordList[i];	  
+    wordList[i] = wordList[j];	  
+    wordList[j] = temp;	  
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>End Screen</Text>
@@ -294,11 +301,22 @@ function EndScreen({navigation}) {
                 source={require('./assets/congrats.png')}
           /> 
       </TouchableHighlight>  
+
+      
     </SafeAreaView>
   );
 }
 
 function EndScreen2({navigation}) {
+  secondsPassed2 = 0;
+
+  for (var i = wordList.length - 1; i > 0; i--) {	  
+    var j = Math.floor(Math.random() * (i + 1));	  
+    var temp = wordList[i];	  
+    wordList[i] = wordList[j];	  
+    wordList[j] = temp;	  
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>End Screen</Text>
