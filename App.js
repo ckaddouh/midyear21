@@ -26,7 +26,8 @@ const fadeIn = {
 };
 
 global.secondsPassed = 0;
-global.xValue = 0;
+global.secondsPassed2 = 0;
+global.wordsGotten = 0;
 
 function HomeScreen({ navigation }) {
   return (
@@ -35,8 +36,13 @@ function HomeScreen({ navigation }) {
       
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
       <Button
-        title="PLAY"
+        title="MODE 1"
         onPress={() => navigation.navigate('Game')}
+        color= "#fff"
+      />
+      <Button
+        title="MODE 2"
+        onPress={() => navigation.navigate('GameMode2')}
         color= "#fff"
       />
     
@@ -81,33 +87,15 @@ function GameScreen({navigation}) {
   "microprocessor", "peripheral", "server", "integrated", "machine", "mainframe", "arithmetic", "information", "mechanism", "expansion",
   "predictor","supercomputer","embedded", "laptop", "universal", "exchange", "formatting", "screensaver", "multimedia", "incrementor", "mathematician",
   "equipment", "gadget"]);
-  const [index, setIndex] = useState(Math.floor(Math.random()*words.length));
-  //["hello", "there", "world", "this", "list", "works", "I", "thiNk"]
-  // setWords(wordFile.toSTring('utf-8').split("\n"));
-  // var content = require('./words.txt');
-  // var tags = content.split("\n");
-  // setWords(tags);
-  // console.log(words[0]);
-  // if ({updateList}) {
-  //   var i;
-  //   var j;
-
-  //   for ( i = words.length - 1; i > 0; i--) {
-  //     j = Math.floor(Math.random() * (i + 1));
-  //     var temp = words[i];
-  //     words[i] = words[j];
-  //     words[j] = temp;
-  //   }
-  //   setUpdateList(false);
-  // }
-  var date, TimeType, hour, minutes, seconds, fullTime;
-
-  date = new Date();
+  
+  var date = new Date();
   
   const [sec, setSecs] = useState(date.getSeconds());
   const [min, setMins] = useState(date.getMinutes());
   const [newSec, setNewSec] = useState(0);
   const [newMin, setNewMin] = useState(0);
+
+  //const[xValue, setXValue] = useState(0);
 
   
   // Creating Date() function object.
@@ -116,19 +104,16 @@ function GameScreen({navigation}) {
   // minutes = date.getMinutes();
   // seconds = date.getSeconds();
 
-  var count = 0;
+  const [xValue, setXValue] = useState(0);
   const inputHandler = (enteredText) => {
     //var points = 0;
   
-    if (score < 3) {
+    if (score < 20) {
       setValue(enteredText);
       if (enteredText == words[score]) {
         setValue('');
         setScore(score+1);
-        count += 1;
-        xValue += 50;
-        setIndex(Math.floor(Math.random()*words.length));
-        // setWords(words.splice(index, 1));
+        setXValue(xValue+15);
       }
     }
     else {
@@ -156,10 +141,11 @@ function GameScreen({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style = {styles.title2}>Type the words as they appear!</Text>
+      <Text style = {styles.title2}>Type the words as they appear! See how long it takes you to get 20 correct.</Text>
+
       <Text style = {styles.word}>{words[score]}</Text>
       <Text style = {styles.score}>{score}</Text>
-      <Text>{min} : {sec} : {newMin} : {newSec}, {secondsPassed}, {newMin == min ? "true":"false"} </Text>
+      {/* <Text>{min} : {sec} : {newMin} : {newSec}, {secondsPassed}, {newMin == min ? "true":"false"} </Text> */}
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
         value={value}
@@ -178,9 +164,14 @@ function GameScreen({navigation}) {
         onPress={() => navigation.navigate('Home')}
       /> 
       <Image
-        style = {styles.mouse}
+        style = {{position: 'absolute', top: 200, left: xValue, width: 20, height: 35}}
         source = {require('./assets/mouse.png')}
         />
+
+      <Image
+        style = {{position: 'absolute', top: 200, right: 20, width: 40, height: 35}}
+        source = {require('./assets/folder.png')}
+        />  
       {/* if ({showButton}) {
         <Button
           title="FINISH"
@@ -192,11 +183,91 @@ function GameScreen({navigation}) {
   );
 }
 
+function GameScreen2({navigation}) {
+
+  const [value, setValue] = useState('');
+  const [score, setScore] = useState(0);
+  const [words, setWords] = useState(["vulnerability", "archive", "expansion", "algorithm", "phishing", "ethernet", "computer", "cache", "arithmetic",
+  "formatting", "dashboard", "encryption", "application", "firewall", "hardware", "graphics", "database", "processing", "controlling", "aggregate", 
+  "assembler", "authorization", "autonomous", "backspace", "keyboard", "binary", "hexadecimal", "octal", "booting", "broadcast", "display", "local",
+  "connection", "decompress", "document", "download","electricity","explorer","footnote","license","software","motherboard","browser","malware",
+  "commercial", "operating", "personal", "proprietary", "random", "filesystem", "spamming", "spreadsheet", "security", "synergy", "training",
+  "version", "virtual", "gigabyte", "errors", "calculate", "attachment", "assisting", "compatible", "technology", "boolean", "variable", "computing",
+  "domain","email","gateway","internet","megahertz", "pseudocode", "protocol", "resolution", "evolution", "analysis", "introduction", "analog", 
+  "microprocessor", "peripheral", "server", "integrated", "machine", "mainframe", "information", "mechanism",
+  "predictor","supercomputer","embedded", "laptop", "universal", "exchange", "screensaver", "multimedia", "incrementor", "mathematician",
+  "equipment", "gadget", "emoticon"]);
+  
+  var date = new Date();
+  const [sec, setSecs] = useState(date.getSeconds());
+  const [min, setMins] = useState(date.getMinutes());
+  const [newSec, setNewSec] = useState(0);
+  const [newMin, setNewMin] = useState(0);
+
+  const inputHandler = (enteredText) => {
+    if (secondsPassed2 <= 60) {
+      setValue(enteredText);
+    
+      if (enteredText == words[score]) {
+        setValue('');
+        setScore(score+1);
+        wordsGotten = score;
+      }
+      var newDate = new Date();
+      setNewMin(newDate.getMinutes());
+      setNewSec(newDate.getSeconds());
+      if (newMin == min) {
+        secondsPassed2 = newSec - sec;        
+      }
+      else if (newMin != min) {
+        secondsPassed2 = (60-sec) + newDate.getSeconds();
+      }
+
+      if (min === newDate.getMinutes()) {
+        secondsPassed2 -= 60;
+      }
+    }
+    else {
+      navigation.navigate('End2');
+    }
+  }
+
+    
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style = {styles.title2}>Type as many words as you can within a minute!</Text>
+      <Text style = {styles.word}>{words[score]}</Text>
+      <Text style = {styles.score}>{score}</Text>
+
+      <TextInput 
+        style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
+        value={value}
+        autoFocus = {true}
+        onChangeText = {inputHandler}
+        placholder = "Type the words as they appear!"
+        autoCapitalize="none"
+        autoCorrect = "false"
+      />
+        <Button 
+          title="BACK"
+          color = "#45bf65"
+          onPress={() => navigation.navigate('Home')}
+        /> 
+    </SafeAreaView>
+  );
+}
+
 function InstructionScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>Instructions</Text>
-      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>Text the words you see as fast as you can! Hit play to begin.</Text>
+      <Text style = {styles.instructions}>Text the words you see as fast as you can!</Text>
+      <Text> </Text>
+      <Text style = {styles.instructions}>In mode 1, see how long it takes you to type 20 words.</Text>
+      <Text> </Text>
+      <Text style = {styles.instructions}>In mode 2, see how many words you can type in 60 seconds!</Text>
+      <Text> </Text>
       
       {/* not able to navigate back to home from a button at the moment */}
       <Button 
@@ -217,7 +288,23 @@ function EndScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style = {styles.title}>End Screen</Text>
-      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial'}}>You got 20 words in {secondsPassed} seconds!</Text>
+      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial', color: 'white'}}>You got 20 words in {secondsPassed} seconds!</Text>
+      {/* not able to navigate back to home from a button at the moment */}
+
+      <TouchableHighlight onPress = {() => navigation.navigate('Home')} style = {styles.congrats}>
+        <Image
+                source={require('./assets/congrats.png')}
+          /> 
+      </TouchableHighlight>  
+    </SafeAreaView>
+  );
+}
+
+function EndScreen2({navigation}) {
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style = {styles.title}>End Screen</Text>
+      <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial', color: 'white'}}>You got {wordsGotten} words in 60 seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
 
       <TouchableHighlight onPress = {() => navigation.navigate('Home')} style = {styles.congrats}>
@@ -239,8 +326,10 @@ function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Game" component={GameScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="GameMode2" component={GameScreen2} options={{ headerShown: false }}/>
         <Stack.Screen name="Instructions" component={InstructionScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="End" component={EndScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="End2" component={EndScreen2} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -269,6 +358,12 @@ const styles = StyleSheet.create({
   playagain:{
     flex: 1,
     top: 100,
+  },
+  instructions: {
+    fontSize: 20, 
+    textAlign: 'center', 
+    fontFamily: 'Courier New',
+    color: 'white',
   },
   dock: {
     position: 'absolute',
