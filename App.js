@@ -54,7 +54,7 @@ function HomeScreen({ navigation }) {
       
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>TURBO TEXTER</Animatable.Text>
       
-      <AwesomeButton
+      <AwesomeButton style= {styles.modeButtons1}
       backgroundColor="blue"
       backgroundShadow="blue"
       borderColor="white"
@@ -67,7 +67,7 @@ function HomeScreen({ navigation }) {
       MODE 1
     </AwesomeButton>
 
-    <AwesomeButton
+    <AwesomeButton style = {styles.modeButtons2}
       backgroundColor="blue"
       medium
       secondary
@@ -78,7 +78,7 @@ function HomeScreen({ navigation }) {
       MODE 2
     </AwesomeButton>
 
-    <AwesomeButton
+    <AwesomeButton style = {styles.instructionButton}
       backgroundColor="blue"
       medium
       secondary
@@ -412,6 +412,7 @@ const styles = StyleSheet.create({
     color: "white",
     position: "absolute",
     top: 100,
+    textAlign: 'center',
   },
   playagain:{
     flex: 1,
@@ -422,6 +423,18 @@ const styles = StyleSheet.create({
     textAlign: 'center', 
     fontFamily: 'Courier New',
     color: 'white',
+  },
+  instructionButton: {
+    position: 'absolute',
+    bottom: 300,
+  }, 
+  modeButtons1: {
+    position: 'absolute',
+    left: 100,
+  },
+  modeButtons2: {
+    position: 'absolute',
+    right: 100,
   },
   dock: {
     position: 'absolute',
