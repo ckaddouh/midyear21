@@ -55,7 +55,7 @@ function HomeScreen({ navigation }) {
       <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>TURBO TEXTER</Animatable.Text>
       
       <AwesomeButton
-      backgroundColor="#1e88e5"
+      backgroundColor="blue"
       backgroundShadow="blue"
       borderColor="white"
       medium
