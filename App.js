@@ -41,7 +41,7 @@ global.wordList = ["calculate", "algorithm", "computer", "gigabyte", "cache", "d
 "domain","ethernet","email","gateway","internet","megahertz","phishing","pseudocode", "protocol", "resolution", "evolution", "analysis", "introduction", "analog", 
 "microprocessor", "peripheral", "server", "integrated", "machine", "mainframe", "arithmetic", "information", "mechanism", "expansion",
 "predictor","supercomputer","embedded", "laptop", "universal", "exchange", "formatting", "screensaver", "multimedia", "incrementor", "mathematician",
-"equipment", "gadget"];
+"equipment", "gadget", "spacebar"];
 
 function specialButton() {
   return <AwesomeButton>Text</AwesomeButton>;
