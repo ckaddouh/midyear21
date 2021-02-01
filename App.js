@@ -1,23 +1,15 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
 import {createAppContainer} from 'react-navigation'; 
 import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animated, TouchableHighlight, Alert } from 'react-native';
-// import MarqueeText from 'react-native-marquee';
 import { StackNavigator } from 'react-navigation';
-// import Welcome from "./assets/screens/Welcome.js";
-// import Play from "./assets/screens/Game.js";
-//import wordsFile from "./words.txt";
 import * as Animatable from 'react-native-animatable';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
-import Icon from 'react-native-vector-icons/FontAwesome';
-//import 'react-awesome-button/dist/themes/theme-blue.css';
 import AwesomeButton from "react-native-really-awesome-button";
-//import 'react-awesome-button/dist/themes/theme-blue.css';
 
 
 const fadeIn = {
@@ -60,7 +52,7 @@ function HomeScreen({ navigation }) {
    
     <SafeAreaView style={styles.container}>
       
-      <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>SPEEDY SNAKE</Animatable.Text>
+      <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style = {styles.title}>TURBO TEXTER</Animatable.Text>
       
       <AwesomeButton
       backgroundColor="#1e88e5"
