@@ -333,7 +333,7 @@ function EndScreen({navigation}) {
   
   return (
     <SafeAreaView style={styles.container}>
-      <Text style = {styles.title}>End Screen</Text>
+      <Text style = {styles.title}>THE END</Text>
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial', color: 'white'}}>You got 20 words in {secondsPassed} seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
 
@@ -360,7 +360,7 @@ function EndScreen2({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style = {styles.title}>End Screen</Text>
+      <Text style = {styles.title}>THE END</Text>
       <Text style = {{fontSize: 20, textAlign: 'center', fontFamily: 'Arial', color: 'white'}}>You got {wordsGotten} words in 60 seconds!</Text>
       {/* not able to navigate back to home from a button at the moment */}
 
