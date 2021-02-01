@@ -9,7 +9,6 @@ import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image, Animate
 import { StackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import AwesomeButton from "react-native-really-awesome-button";
 
 
